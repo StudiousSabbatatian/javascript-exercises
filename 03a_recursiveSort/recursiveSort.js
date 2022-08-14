@@ -9,16 +9,32 @@ const recursiveSort = function(array) {
     let leftSideCutoff = parseInt(arrLen / 2);
     //console.log(leftSideCutoff)
 //sort left side
-    let left = recursiveSort(array.slice(1, leftSideCutoff + 1))
+    let left = recursiveSort(array.slice(0, leftSideCutoff))
 //sort right side
-    let right = recursiveSort(array.slice(leftSideCutoff + 1, arrLen + 1))
-//swap if needed
-    if (left[left.length - 1] > right[0]) {
-        return right.concat(left);
-    } else {
-        return left.concat(right);
-    }
-};
+    let right = recursiveSort(array.slice(leftSideCutoff, arrLen + 1))
+//merge
+    let returnarray;
+    let rightindex = 0;
+    let leftindex = 0;
+    for (i = 0; i < array.length; i++) {
+        if(rightindex === right.length) {
+            returnarray.push(left[leftindex]);
+            leftindex += 1;
+        } else if (leftindex === left.length) {
+            returnarray.push(right[rightindex])
+            rightindex += 1;
+        } else {
+            if (right[rightindex] >= left[leftindex]) {
+                returnarray.push(left[leftindex]);
+                leftindex += 1;
+            } else {
+                returnarray.push(right[rightindex]);
+                rightindex += 1;
+            }
+        }
+    };
+        }
+  
 // Do not edit below this line
 module.exports = recursiveSort;
 let arr = recursiveSort(array);

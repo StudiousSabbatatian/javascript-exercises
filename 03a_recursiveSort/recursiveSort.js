@@ -1,4 +1,4 @@
-let array = [5, 3, 4, 2, 1, 6];
+//let array = [5, 3, 4, 2, 1, 6];
 
 const recursiveSort = function(array) {
 //if length = 1, return
@@ -13,7 +13,7 @@ const recursiveSort = function(array) {
 //sort right side
     let right = recursiveSort(array.slice(leftSideCutoff, arrLen + 1))
 //merge
-    let returnarray;
+    let returnarray = [];
     let rightindex = 0;
     let leftindex = 0;
     for (i = 0; i < array.length; i++) {
@@ -33,9 +33,11 @@ const recursiveSort = function(array) {
             }
         }
     };
-        }
+    return returnarray;
+
+}
   
 // Do not edit below this line
 module.exports = recursiveSort;
-let arr = recursiveSort(array);
-console.log(arr);
+/* let arr = recursiveSort(array);
+console.log(arr); */

@@ -14,9 +14,9 @@ const recursiveSort = function(array) {
     let right = recursiveSort(array.slice(leftSideCutoff + 1, arrLen + 1))
 //swap if needed
     if (left[left.length - 1] > right[0]) {
-        return concat(right, left);
+        return right.concat(left);
     } else {
-        return concat(left, right);
+        return left.concat(right);
     }
 };
 // Do not edit below this line
